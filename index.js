@@ -13,13 +13,15 @@
 			bind : function (el, binding, vnode) {
 
 				var tag = vnode.tag,
-					type = vnode.type,
+					type = vnode.elm.type,
 					value = binding.value,
-					method = binding.arg;
+					method = binding.arg,
+					modifier = Object.keys(binding.modifiers);
+
 
 				var handler = 
-					( binding.modifiers.length > 0 )
-						? binding.modifiers[0] :
+					( modifier.length > 0 )
+						? modifier[0] :
 					( tag === 'select' )
 						? 'change' :
 					( tag === 'input' && type === 'range' )
@@ -28,16 +30,17 @@
 						? 'click' :
 					( tag === 'input' && type === 'radio' )
 						? 'click' :
-						'keyup';
+						'keydown';
 
 
 				if ( options.hasOwnProperty('dev') )
 				{
-					console.log('tag', tag)
-					console.log('type', type)
-					console.log('value', value)
-					console.log('method', method)
-					console.log('handler', handler)
+					console.log('tag =>', tag)
+					console.log('type =>', type)
+					console.log('value =>', value)
+					console.log('method =>', method)
+					console.log('handler =>', handler)
+					console.log('modifier =>', modifier)
 				}
 				
 
