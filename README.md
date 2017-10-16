@@ -19,7 +19,7 @@ You can get around this by implementing the longhand version of `v-model`, like 
     name="item" 
     type="text" 
     :value="item.value"
-    @keydown="update"
+    @input="update"
   />
 </template>
 ```
@@ -78,7 +78,7 @@ By default, `v-model-vuex` will attempt to bind the correct event trigger for th
 ```vue    
 <template>
   <!-- just pass the method name -->
-  <!-- this would default to @keydown -->
+  <!-- this would default to @input -->
   <input 
     class="input" 
     name="item" 

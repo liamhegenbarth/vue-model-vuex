@@ -30,7 +30,7 @@
 						? 'click' :
 					( tag === 'input' && type === 'radio' )
 						? 'click' :
-						'keydown';
+						'input';
 
 
 				if ( options.hasOwnProperty('dev') )
