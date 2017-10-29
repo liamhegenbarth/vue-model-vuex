@@ -129,3 +129,17 @@ By default, `v-model-vuex` will attempt to bind the correct event trigger for th
   }
 </script>
 ``` 
+
+## Changelog
+
+
+**v1.2.0**
+- add better support for checkboxes, set `checked` prop not `value`
+
+**v1.1.0**
+- update default event handler to `input`, mimic `@input`
+
+**v1.0.0**
+- initial release
+
+
