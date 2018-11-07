@@ -2,15 +2,25 @@
 ;(function () {
 
 	var vueModelVuex = {};
+	
+	function getProp(tag, type) {
+		return ( tag === 'input' && type === 'checkbox' )
+			? 'checked' :
+			'value';
+	}
 
 	vueModelVuex.install = function (Vue, options) {
-
+	
 		var options = options || {};
 
 
 		// define directive
 		Vue.directive('model-vuex', {
-
+			update: function(el, binding, vnode) {
+				// get the value being passed from vuex store and bind
+				// set the prop based on input type
+				vnode.elm[getProp(vnode.tag, vnode.elm.type)] = binding.value;
+			},
 			bind : function (el, binding, vnode) {
 
 				// store settings from how user calls directive
@@ -39,11 +49,7 @@
 
 				// store input prop type
 				// proper support for checkboxes
-				var prop = 
-					( tag === 'input' && type === 'checkbox' )
-						? 'checked' :
-						'value';
-
+				var prop = getProp(tag, type);
 
 				// simple dev mode
 				// output settings
